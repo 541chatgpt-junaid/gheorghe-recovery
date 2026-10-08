@@ -7,6 +7,39 @@
   var WHATSAPP_NUMBER = '447402370507';
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
+  /* ---------- Light / dark theme toggle ---------- */
+  var root = document.documentElement;
+  var themeToggle = document.querySelector('.theme-toggle');
+  var themeMeta = document.querySelector('meta[name="theme-color"]');
+
+  function currentTheme() {
+    return root.getAttribute('data-theme') === 'light' ? 'light' : 'dark';
+  }
+
+  function syncToggle() {
+    var label = currentTheme() === 'light' ? 'Switch to dark mode' : 'Switch to light mode';
+    themeToggle.setAttribute('aria-label', label);
+    themeToggle.setAttribute('title', label);
+    themeMeta.setAttribute('content', currentTheme() === 'light' ? '#FFFFFF' : '#0E0E0E');
+  }
+
+  function setTheme(theme) {
+    if (!reduceMotion.matches) {
+      root.classList.add('theme-anim');
+      setTimeout(function () { root.classList.remove('theme-anim'); }, 450);
+    }
+    root.setAttribute('data-theme', theme);
+    try { localStorage.setItem('theme', theme); } catch (e) {}
+    syncToggle();
+  }
+
+  if (themeToggle) {
+    syncToggle();
+    themeToggle.addEventListener('click', function () {
+      setTheme(currentTheme() === 'light' ? 'dark' : 'light');
+    });
+  }
+
   /* ---------- Sticky header ---------- */
   var header = document.querySelector('.header');
   function onScrollHeader() {
