@@ -14,15 +14,17 @@
   <meta property="og:site_name" content="Gheorghe 24/7 Recovery">
   <meta property="og:title" content="Gheorghe 24/7 Recovery | Breakdown &amp; Towing Across the UK">
   <meta property="og:description" content="24/7 vehicle breakdown recovery, towing and transport across the UK. Call or WhatsApp +44 7402 370507.">
-  <!-- PLACEHOLDER: replace with client's real photo (absolute URL once the site has a domain) -->
-  <meta property="og:image" content="https://unsplash.com/photos/E5hckifQtgg/download?force=true&amp;w=1200">
+  <!-- Use the full https:// URL here once the site has its own domain -->
+  <meta property="og:image" content="assets/img/og-image.jpg">
   <meta name="twitter:card" content="summary_large_image">
 
   <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- Arial is used where installed (Windows, macOS, iOS); Arimo is a metric-compatible Arial match for Android/Linux -->
+  <link href="https://fonts.googleapis.com/css2?family=Arimo:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="preload" as="image" href="assets/img/hero-truck-900.webp" imagesrcset="assets/img/hero-truck-900.webp 900w, assets/img/hero-truck-1600.webp 1600w" imagesizes="100vw">
   <link rel="stylesheet" href="assets/css/style.css">
 
   <script>
@@ -169,14 +171,14 @@
   <!-- ============ HERO ============ -->
   <section class="hero" aria-labelledby="hero-title">
     <div class="hero__media">
-      <!-- PLACEHOLDER: replace with client's real photo -->
+      <!-- Recovery truck photo supplied for the demo -->
       <img class="hero__img"
-           src="https://unsplash.com/photos/E5hckifQtgg/download?force=true&amp;w=1600"
-           srcset="https://unsplash.com/photos/E5hckifQtgg/download?force=true&amp;w=800 800w,
-                   https://unsplash.com/photos/E5hckifQtgg/download?force=true&amp;w=1600 1600w,
-                   https://unsplash.com/photos/E5hckifQtgg/download?force=true&amp;w=2200 2200w"
+           src="assets/img/hero-truck-1600.webp"
+           srcset="assets/img/hero-truck-900.webp 900w,
+                   assets/img/hero-truck-1600.webp 1600w"
            sizes="100vw"
-           alt="Recovery truck carrying a car on its flatbed at night"
+           width="1600" height="1200"
+           alt="White flatbed recovery truck carrying a black SUV on a residential street"
            fetchpriority="high" decoding="async"
            onerror="this.parentNode.classList.add('img-fallback');this.remove();">
     </div>
