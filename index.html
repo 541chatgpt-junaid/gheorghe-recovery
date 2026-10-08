@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en-GB">
+<html lang="en-GB" data-theme="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -25,7 +25,17 @@
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/style.css">
 
-  <script>document.documentElement.classList.add('js');</script>
+  <script>
+    document.documentElement.classList.add('js');
+    // Apply the saved theme before first paint to avoid a flash
+    try {
+      var savedTheme = localStorage.getItem('theme');
+      if (savedTheme === 'light' || savedTheme === 'dark') {
+        document.documentElement.setAttribute('data-theme', savedTheme);
+        if (savedTheme === 'light') document.querySelector('meta[name="theme-color"]').setAttribute('content', '#FFFFFF');
+      }
+    } catch (e) {}
+  </script>
 
   <script type="application/ld+json">
   {
@@ -85,6 +95,8 @@
     <symbol id="i-arrow" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 6l6 6-6 6"/></symbol>
     <symbol id="i-left" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" d="m15 18-6-6 6-6"/></symbol>
     <symbol id="i-right" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" d="m9 18 6-6-6-6"/></symbol>
+    <symbol id="i-sun" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></g></symbol>
+    <symbol id="i-moon" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></symbol>
     <symbol id="i-send" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4z"/></g></symbol>
   </defs>
 </svg>
@@ -107,6 +119,14 @@
         <li><a href="#contact">Contact</a></li>
       </ul>
     </nav>
+
+    <button class="theme-toggle" type="button" aria-label="Switch to light mode" title="Switch to light mode">
+      <span class="theme-toggle__track" aria-hidden="true">
+        <span class="theme-toggle__knob"></span>
+        <svg class="theme-toggle__sun"><use href="#i-sun"/></svg>
+        <svg class="theme-toggle__moon"><use href="#i-moon"/></svg>
+      </span>
+    </button>
 
     <a href="tel:+447402370507" class="btn btn--yellow btn--sm header__call pulse-ring">
       <svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg>
